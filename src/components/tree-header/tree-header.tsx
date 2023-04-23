@@ -1,4 +1,4 @@
-import './header.css';
+import './tree-header.css';
 
 function Header() : JSX.Element {
   return (
