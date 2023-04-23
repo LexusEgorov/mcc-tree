@@ -1,4 +1,21 @@
 .tree-controls{
+  padding: 5px;
+  border-top: 2px solid green;
+  box-sizing: border-box;
   display: flex;
-  
+  justify-content: center;
+}
+
+.controls{
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.control{
+  background-color: #cdffcd;
+  border: 1px solid green;
+  border-radius: 15px;
+  cursor: pointer;
+  padding: 10px 15px;
 }
