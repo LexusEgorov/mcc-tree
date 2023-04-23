@@ -1,24 +1,28 @@
 import './tree-controls.css';
 
-function TreeControls() : JSX.Element {
+type TreeControlsProps = {
+  currentNode: number;
+}
+
+function TreeControls({currentNode} : TreeControlsProps) : JSX.Element {
   /*
     Handlers for Add, Remove, Edit, Reset
     OnClick: openModal(action, selectedNode)
   */
   const handleAdd = () => {
-    console.log('add');
+    console.log(`Add to ${currentNode}`);
   };
   
   const handleRemove = () => {
-    console.log('remove');
+    console.log(`Remove from ${currentNode}`);
   };
   
   const handleEdit = () => {
-    console.log('edit');
+    console.log(`Edit ${currentNode}`);
   };
   
   const handleReset = () => {
-    console.log('reset');
+    console.log('Reset');
   };
 
   return(

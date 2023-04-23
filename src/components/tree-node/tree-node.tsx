@@ -1,17 +1,34 @@
 import { TreeNodeType } from '../../types/types';
+import './tree-node.css';
 
-function TreeNode({value, childNodes} : TreeNodeType) : JSX.Element {
+type TreeNodeProps = {
+  node: TreeNodeType,
+  selectedNode: number,
+  selectHandler: (id: number) => void
+}
+
+function TreeNode({node, selectedNode, selectHandler} : TreeNodeProps) : JSX.Element {
+  const {id, value, childNodes} = node;
+
+  const handleSelect = () => {
+    selectHandler(id);
+  }
+
   return(
     <ul className='tree-node'>
-      <p className="tree-node-value">{value}</p>
+      <p
+        className={`tree-node-value ${selectedNode === id ? 'selected' : ''}`}
+        onClick={handleSelect}
+      >
+        {value}
+      </p>
       {
-        childNodes && childNodes.map((node) => (
-          <li>
+        childNodes && childNodes.map((currentNode) => (
+          <li key={currentNode.id}>
             <TreeNode
-              id={node.id}
-              key={node.id}
-              value={node.value}
-              childNodes={node.childNodes}
+              node={currentNode}
+              selectedNode={selectedNode}
+              selectHandler={selectHandler}
             />
           </li>
         ))

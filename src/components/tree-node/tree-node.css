@@ -1,0 +1,9 @@
+.tree-node-value{
+  cursor: pointer;
+  width: fit-content;
+  padding: 5px;
+}
+
+.selected{
+  background-color: #b7f8af;
+}
