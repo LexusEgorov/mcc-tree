@@ -22,5 +22,22 @@ export const traverseRootChild = {
     }
 
     return 0;
-  }
+  },
+
+  removeNode: (root: TreeNodeType, removeId: number) : number => {
+    for(let i = 0; i < root.childNodes.length; i++){
+      if(root.childNodes[i].id === removeId){
+        root.childNodes = [...root.childNodes.slice(0, i), ...root.childNodes.slice(++i)];
+        return 1;
+      }
+    }
+
+    for(let i = 0; i < root.childNodes.length; i++){
+      if(traverseRootChild.removeNode(root.childNodes[i], removeId) === 1){
+        return 1;
+      }
+    }
+
+    return 0;
+  },
 }

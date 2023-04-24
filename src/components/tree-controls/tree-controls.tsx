@@ -1,5 +1,5 @@
 import { useAppDispatch } from '../../hooks/hooks';
-import { addNode } from '../../store/app-data/app-data';
+import { addNode, removeNode } from '../../store/app-data/app-data';
 import './tree-controls.css';
 
 type TreeControlsProps = {
@@ -15,12 +15,12 @@ function TreeControls({currentNode} : TreeControlsProps) : JSX.Element {
   const handleAdd = () => {
     dispatch(addNode({
       parentId: currentNode,
-      value: 777,
+      value: '123',
     }))
   };
   
   const handleRemove = () => {
-    console.log(`Remove from ${currentNode}`);
+    dispatch(removeNode({removeId: currentNode}))
   };
   
   const handleEdit = () => {
