@@ -8,7 +8,7 @@ import Modal from '../modal/modal';
 import { Action } from '../../const';
 
 function TreeBody() : JSX.Element {
-  const [selectedNode, setSelectedNode] = useState(-1);
+  const [selectedNode, setSelectedNode] = useState(-1); //Node id
   const [isModalOpened, setIsModalOpened] = useState(false);
   const [currentAction, setCurrentAction] = useState('');
 
@@ -22,6 +22,9 @@ function TreeBody() : JSX.Element {
     setSelectedNode(-1);
   }
 
+  /*
+    Check for open modal or not
+  */
   const handleOpenModal = (action: string) => {
     let isLegal = true;
 

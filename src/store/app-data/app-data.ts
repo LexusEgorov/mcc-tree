@@ -3,12 +3,15 @@ import { NameSpace, node_1 } from '../../const';
 import { AddNodePayload, AppData, EditNodePayload, RemoveNodePayload } from '../../types/types';
 import { generator, traverseRootChild } from '../../utils/utils';
 
-const generateId = generator(7);
+/*
+  If we get rootNode from the server, getSize must execute when promise is fulfilled
+  Not here, in api module
+*/
+const generateId = generator(traverseRootChild.getSize(node_1));
 
 const initialState : AppData = {
   rootNode: node_1,
   initValue: node_1,
-  size: -1,
 }
 
 export const appData = createSlice({

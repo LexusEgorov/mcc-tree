@@ -10,7 +10,10 @@ type ModalProps = {
   isOpened: boolean,
   closeModal: () => void,
 }
-
+/*
+  Render Modal
+  When user accept the action, calls dispatch to store
+*/
 function Modal({currentNode, action, isOpened, closeModal} : ModalProps) : JSX.Element {
   const dispatch = useAppDispatch();
   const [value, setValue] = useState('');

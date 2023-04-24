@@ -9,7 +9,6 @@ export type TreeNodeType = {
 export type AppData = {
   rootNode?: TreeNodeType;
   initValue?: TreeNodeType;
-  size: number;
 }
 
 export type AddNodePayload = {
