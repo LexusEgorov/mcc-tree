@@ -1,12 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { NameSpace, node_1 } from '../../const';
-import { AddNodePayload, AppData, RemoveNodePayload } from '../../types/types';
+import { AddNodePayload, AppData, EditNodePayload, RemoveNodePayload } from '../../types/types';
 import { generator, traverseRootChild } from '../../utils/utils';
 
 const generateId = generator(7);
 
 const initialState : AppData = {
   rootNode: node_1,
+  initValue: node_1,
+  size: -1,
 }
 
 export const appData = createSlice({
@@ -15,6 +17,7 @@ export const appData = createSlice({
   reducers: {
     addNode: (state, action: PayloadAction<AddNodePayload>) => {
       const {parentId, value} = action.payload;
+      
       const node = {
         id: generateId(),
         value: value,
@@ -28,6 +31,7 @@ export const appData = createSlice({
 
       traverseRootChild.addNode(state.rootNode!, parentId, node);
     },
+
     removeNode: (state, action: PayloadAction<RemoveNodePayload>) => {
       const {removeId} = action.payload;
       
@@ -42,7 +46,21 @@ export const appData = createSlice({
 
       traverseRootChild.removeNode(state.rootNode, action.payload.removeId);
     },
+
+    editNode: (state, action: PayloadAction<EditNodePayload> ) => {
+      const {editId, value} = action.payload;
+
+      if(!state.rootNode){
+        return;
+      }
+
+      traverseRootChild.editNode(state.rootNode, editId, value);
+    },
+
+    reset: (state) => {
+      state.rootNode = state.initValue;
+    }
   },
 });
 
-export const { addNode, removeNode } = appData.actions;
+export const { addNode, removeNode, editNode, reset } = appData.actions;

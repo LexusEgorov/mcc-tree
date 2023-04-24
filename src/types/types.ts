@@ -8,6 +8,8 @@ export type TreeNodeType = {
 
 export type AppData = {
   rootNode?: TreeNodeType;
+  initValue?: TreeNodeType;
+  size: number;
 }
 
 export type AddNodePayload = {
@@ -17,6 +19,11 @@ export type AddNodePayload = {
 
 export type RemoveNodePayload = {
   removeId: number,
+}
+
+export type EditNodePayload = {
+  editId: number,
+  value: string,
 }
 
 export type AppDispatch = typeof store.dispatch;

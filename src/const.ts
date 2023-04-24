@@ -2,6 +2,18 @@ export enum NameSpace {
   App = 'APP',
 };
 
+export enum Action {
+  Add = 'ADD',
+  Remove = 'REMOVE',
+  Edit = 'Edit',
+  Reset = 'Reset',
+};
+
+export enum ModalType {
+  Input = 'INPUT',
+  Accept = 'ACCEPT',
+}
+
 const node_2 = {
   id: 2,
   value: '2',

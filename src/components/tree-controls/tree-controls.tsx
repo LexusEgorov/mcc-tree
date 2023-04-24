@@ -1,34 +1,29 @@
-import { useAppDispatch } from '../../hooks/hooks';
-import { addNode, removeNode } from '../../store/app-data/app-data';
+import { Action } from '../../const';
 import './tree-controls.css';
 
 type TreeControlsProps = {
-  currentNode: number;
+  openModal: (action: string) => void
 }
 
-function TreeControls({currentNode} : TreeControlsProps) : JSX.Element {
-  const dispatch = useAppDispatch();
+function TreeControls({openModal} : TreeControlsProps) : JSX.Element {
   /*
     Handlers for Add, Remove, Edit, Reset
     OnClick: openModal(action, selectedNode)
   */
   const handleAdd = () => {
-    dispatch(addNode({
-      parentId: currentNode,
-      value: '123',
-    }))
+    openModal(Action.Add);
   };
   
   const handleRemove = () => {
-    dispatch(removeNode({removeId: currentNode}))
+    openModal(Action.Remove);
   };
   
   const handleEdit = () => {
-    console.log(`Edit ${currentNode}`);
+    openModal(Action.Edit);
   };
   
   const handleReset = () => {
-    console.log('Reset');
+    openModal(Action.Reset);
   };
 
   return(

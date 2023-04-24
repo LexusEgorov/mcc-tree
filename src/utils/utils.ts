@@ -40,4 +40,28 @@ export const traverseRootChild = {
 
     return 0;
   },
+
+  editNode: (root: TreeNodeType, editId: number, newValue: string) : number => {
+    if(root.id === editId){
+      root.value = newValue;
+      return 1;
+    }
+
+    for(let i = 0; i < root.childNodes.length; i++){
+      if(traverseRootChild.editNode(root.childNodes[i], editId, newValue) === 1){
+        return 1;
+      }
+    }
+
+    return 0;
+  },
+
+  getSize: (root : TreeNodeType) : number => {
+    let size = 1;
+    for(let i = 0; i < root.childNodes.length; i++){
+      size += traverseRootChild.getSize(root.childNodes[i]);
+    }
+
+    return size;
+  }
 }
