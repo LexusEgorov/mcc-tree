@@ -1,9 +1,51 @@
+.tree-node{
+  position: relative;
+}
+
+.tree-node li{
+  border-left: 4px solid #805700;
+  margin-left: 16px;
+}
+
+.tree-node::before{
+  content: "";
+  display: block;
+  width: 30px;
+  height: 4px;
+  position: absolute;
+  left: -30px;
+  top: calc(0.5em + 4px);
+  background-color: #805700;
+}
+
+.tree-node::after{
+  content: "";
+  display: block;
+  width: 4px;
+  height: 32px;
+  position: absolute;
+  left: -34px;
+  top: -16px;
+  background-color: #805700;
+}
+
 .tree-node-value{
   cursor: pointer;
   width: fit-content;
+  min-width: 40px;
   padding: 5px;
+  border: 2px solid #805700;
+  box-sizing: border-box;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+}
+
+.leaf{
+  background-color: #51ff00;
+  border: none;
 }
 
 .selected{
-  background-color: #b7f8af;
+  background-color: #ff6d34;
 }

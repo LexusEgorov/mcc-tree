@@ -17,7 +17,7 @@ function TreeNode({node, selectedNode, selectHandler} : TreeNodeProps) : JSX.Ele
   return(
     <ul className='tree-node'>
       <p
-        className={`tree-node-value ${selectedNode === id ? 'selected' : ''}`}
+        className={`tree-node-value${selectedNode === id ? ' selected' : ''}${childNodes.length ? '' : ' leaf'}`}
         onClick={handleSelect}
       >
         {value}
